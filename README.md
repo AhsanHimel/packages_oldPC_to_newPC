@@ -13,4 +13,4 @@ Step 4: Run the function with necessary arguments.
 `version` = character; applicable when do = "new", takes the value 'same' to install the same versions, 'update' otherwise.
 
 Returns:\
-changedVerPackages = dataframe; contains three columns: Package, VersionNow, VersionPreviously.\
+changedVerPackages = dataframe; contains three columns: Package, VersionNow, VersionPreviously.
