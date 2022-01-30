@@ -1,6 +1,6 @@
 
 # get all installed package details in a data frame
-installedPreviously <- as.data.frame(
+getOld <- as.data.frame(
   installed.packages(), 
   row.names = F
 )
