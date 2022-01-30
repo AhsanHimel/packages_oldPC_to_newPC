@@ -1,27 +1,43 @@
 
-# get all installed package details in a data frame
-getOld <- as.data.frame(
-  installed.packages(), 
-  row.names = F
-)
+packages_oldPC_to_newPC(do = "old", location = "installed_previously.csv", install = T){
+  if(do == "old"){
+    
+    # get all installed package details in a data frame
+    installedPreviously <- as.data.frame(
+      installed.packages(), 
+      row.names = F
+    )
+    
+    # writing a csv that contains old computer's package details
+    write.csv(x = installedPreviously, 
+              file = paste0(location), 
+              row.names = F)
+  } else if (do == "new"){
+    # Read the csv file from old pc
+    installedPreviously <- read.csv(location)
+    
+    # get all installed package details in a data frame
+    installedNow <- as.data.frame(  
+      installed.packages(),
+      row.names = F
+    )
+    
+    if(install = T){
+      
+      # finds packages that are not installed in the new pc
+      toInstall <- setdiff(installedPreviously$Package, installedNow$Package)
+      
+      # installs the packages that are not installed
+      install.packages(toInstall)
+    }
+  }
+}
 
-write.csv(installedPreviously, './packages/installed_previously.csv', row.names = F)
-# Creates a csv file that contains all package details installed in the old pc
 
-# Read the csv file from old pc
-installedPreviously <- read.csv('packages/installed_previously.csv')
 
-# get all installed package details in a data frame
-installedNow <- as.data.frame(  
-  installed.packages(),
-  row.names = F
-)
 
-# finds packages that are not installed in the new pc
-toInstall <- setdiff(installedPreviously$Package, installedNow$Package)
 
-# installs the packages that are not installed
-install.packages(toInstall)
+
 
 # to install the same versions
 for(i in toInstall) {
