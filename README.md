@@ -1,4 +1,4 @@
-# packages_oldPC_to_newPC
+# Easily Install Packages From Your Other Computer
 Installs the packages that are in an old computer to a new computer with updated why versions or same versions.
 
 Arguments:\
